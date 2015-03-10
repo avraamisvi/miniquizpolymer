@@ -1,0 +1,42 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/core-animation/core-animation.html">
+
+<polymer-element name="quiz-card">
+	<template>
+    <style>
+      #cont {
+        border: grey;
+        border-style: solid;
+        border-width: thin;
+        width: 19.3em;
+        max-width: 30%;
+        margin-left: 35%;
+      }
+    </style>
+
+    <core-animation id="fadein" duration="1500">
+      <core-animation-keyframe>
+        <core-animation-prop name="opacity" value="0"></core-animation-prop>
+      </core-animation-keyframe>
+      <core-animation-keyframe>
+        <core-animation-prop name="opacity" value="1"></core-animation-prop>
+      </core-animation-keyframe>
+    </core-animation>
+
+    <div id="frame">
+      <div id="cont">
+          asdasdasd
+      </div>
+    </div>
+	</template>
+
+	<script>
+		Polymer({
+			ready: function(){
+        var animation = this.$.fadein;
+        animation.target = this.$.conteudo;
+        animation.play();
+			}
+		})
+	</script>
+</polymer-element>
