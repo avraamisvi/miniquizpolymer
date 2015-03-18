@@ -5,28 +5,19 @@
         <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 
         <link rel="import" href="quiz-card.html">
+        <link rel="import" href="quiz-question.html">
 
         <title>Hello World</title>
     </head>
     <body unresolved fullbleed onload="load()">
 
-        <quiz-card ></quiz-card>
+        <quiz-question id="teste1" question="Quais foram as cidades destruidas por fogo e enxofre"
+        data="[{answer:'Sodoma', valid:true},{answer:'Gomorra', valid:true}, {answer:'New York', valid:false}, {answer:'Rio de Janeiro', valid:false}]"
+        ></quiz-card>
 
         <script>
-          /*var goodapplication = document.querySelector('good-summary');
-          var goodarticle = document.querySelector('good-article');
-
-          goodapplication.addEventListener('showarticle', function(e) {
-            goodarticle.showArticle(e.detail.article);
-            goodapplication.hidden=true;
-          });
-
-          goodarticle.addEventListener('showhome', function(e) {
-            goodapplication.hidden=false;
-          });*/
-
           function load() {
-
+            //document.getElementById("teste1").show();
           }
         </script>
     </body>
