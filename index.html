@@ -11,13 +11,16 @@
     </head>
     <body unresolved fullbleed onload="load()">
 
-        <quiz-question id="teste1" question="Quais foram as cidades destruidas por fogo e enxofre"
-        data="[{answer:'Sodoma', valid:true},{answer:'Gomorra', valid:true}, {answer:'New York', valid:false}, {answer:'Rio de Janeiro', valid:false}]"
+        <quiz-question id="teste1" data="quiz.json"
         ></quiz-card>
 
         <script>
           function load() {
-            //document.getElementById("teste1").show();
+            setTimeout(function(){
+              console.log("asdasdsadasd")
+              document.getElementById("teste1").show();
+              document.getElementById("teste1").loadData();
+            }, 300);
           }
         </script>
     </body>

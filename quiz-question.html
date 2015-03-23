@@ -1,10 +1,11 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/core-list/core-list.html">
 <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="quiz-card.html">
 
 
-<polymer-element name="quiz-question" attributes="question data" extends="quiz-card">
+<polymer-element name="quiz-question" attributes="data" extends="quiz-card">
 	<template>
   <style>
   .contentStyle {
@@ -16,6 +17,8 @@
       margin-left: 35%;
     }
   </style>
+
+	<core-ajax	id="dataajax"	url="{{data}}"	handleAs="json"	on-core-response="{{handleResponse}}"></core-ajax>
 
     <div id="frame" style="opacity:0;" >
       <div id="cont" class="contentStyle" >
@@ -34,10 +37,28 @@
 
 	<script>
 		Polymer({
-      data:[{answer:"", valid:false}],
+      data:"",
       question:"",
 
-      ready: function(){
+			handleResponse: function(ev) {
+
+				response = ev.detail.response;
+
+				this.question = response.question;
+
+				i = 0;
+        for(i =0; i < response.answers.length; i++) {
+          check = document.createElement('paper-checkbox');
+          this.$.answers.appendChild(check);
+          check.label = response.answers[i].answer;
+        }
+			},
+
+			loadData: function() {
+				this.$.dataajax.go();
+			}
+
+			/*,ready: function(){
         i = 0;
         for(i =0; i < this.data.length; i++) {
           check = document.createElement('paper-checkbox');
@@ -46,7 +67,7 @@
         }
 
         this.super();
-			},
+			},*/
     })
 	</script>
 </polymer-element>
